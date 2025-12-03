@@ -1206,12 +1206,14 @@ section {
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: var(--primary-color);
+  border-color: var(--bg-dark);
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
 
 .form-group textarea {
   resize: vertical;
+}
+.btn .btn-primary {
 }
 
 /* Footer */
