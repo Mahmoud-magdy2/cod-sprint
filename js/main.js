@@ -92,30 +92,68 @@ filterButtons.forEach((button) => {
   });
 });
 
-// Contact Form Handler
+// Contact Form Handler (using EmailJS)
 const contactForm = document.getElementById("contactForm");
 
-contactForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+if (contactForm) {
+  const EMAILJS_PUBLIC_KEY = "7PCs8WzbGVMnO4_u7";
+  const EMAILJS_SERVICE_ID = "service_n75wwff";
+  const EMAILJS_TEMPLATE_ID = "template_n99nttj"; // Template ID من Email Templates
 
-  // Get form values
-  const formData = {
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    subject: document.getElementById("subject").value,
-    message: document.getElementById("message").value,
-  };
+  // تأكد من تهيئة EmailJS مرة واحدة
+  if (window.emailjs && EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY") {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+  }
 
-  // Here you would typically send the data to a server
-  // For now, we'll just show an alert
-  console.log("Form submitted:", formData);
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  // Show success message
-  alert("Thank you for your message! I will get back to you soon.");
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone")
+      ? document.getElementById("phone").value
+      : "";
+    const subject = document.getElementById("subject").value;
+    const message = document.getElementById("message").value;
 
-  // Reset form
-  contactForm.reset();
-});
+    // fallback لو المستخدم لسه ما ضبطش EmailJS
+    if (!window.emailjs || EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY") {
+      alert(
+        "Form is not connected to email yet. Please configure EmailJS keys in main.js."
+      );
+      return;
+    }
+
+    // template parameters يجب أن تطابق أسماء المتغيرات داخل EmailJS template
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      phone,
+      subject,
+      message,
+      to_email: email,
+    };
+
+    // الصيغة الرسمية من EmailJS: serviceID, templateID, params, publicKey
+    emailjs
+      .send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        () => {
+          alert("تم إرسال رسالتك بنجاح ✅");
+          contactForm.reset();
+        },
+        (error) => {
+          console.error("EmailJS error:", error);
+          alert("حصل خطأ أثناء الإرسال، جرّب مرة تانية.");
+        }
+      );
+  });
+}
 
 // Intersection Observer for fade-in animations
 const observerOptions = {
@@ -238,6 +276,6 @@ if (serviceIcons.length > 0) {
     serviceIcons[0].classList.add("active");
   }, 500);
 
-  // Rotate every 3 seconds
-  setInterval(rotateServiceIcons, 3000);
+  // Rotate every 2 seconds (faster transitions)
+  setInterval(rotateServiceIcons, 1750);
 }

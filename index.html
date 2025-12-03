@@ -8,11 +8,16 @@
       content="Cod Sprint - Professional Front-End Design, Shopify Store Design, and Logo Design Services"
     />
     <title>Cod Sprint - Front-End & Shopify Design Company</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="img/no-bakgra/45023600-2044-4f04-a336-543fe70ddf37_removalai_preview.png"
+    />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700;900&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -78,8 +83,14 @@
             life.
           </p>
           <div class="hero-buttons">
-            <a href="#portfolio" class="btn btn-primary">View Our Work</a>
-            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            <a href="#portfolio" class="btn btn-primary">
+              <span class="mas">View Our Work</span>
+              View Our Work
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              <span class="mas">Get In Touch</span>
+              Get In Touch
+            </a>
           </div>
         </div>
         <div class="hero-image">
@@ -453,13 +464,34 @@
       <div class="container">
         <h2 class="section-title">Our Work</h2>
         <div class="portfolio-filters">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="frontend">Front-End</button>
-          <button class="filter-btn" data-filter="shopify">Shopify</button>
-          <button class="filter-btn" data-filter="logo">Logo Design</button>
-          <button class="filter-btn" data-filter="video">Video Editing</button>
-          <button class="filter-btn" data-filter="mobile">Mobile App</button>
-          <button class="filter-btn" data-filter="branding">Branding</button>
+          <button class="filter-btn active" data-filter="all">
+            <span class="mas">All</span>
+            All
+          </button>
+          <button class="filter-btn" data-filter="frontend">
+            <span class="mas">Front-End</span>
+            Front-End
+          </button>
+          <button class="filter-btn" data-filter="shopify">
+            <span class="mas">Shopify</span>
+            Shopify
+          </button>
+          <button class="filter-btn" data-filter="logo">
+            <span class="mas">Logo Design</span>
+            Logo Design
+          </button>
+          <button class="filter-btn" data-filter="video">
+            <span class="mas">Video Editing</span>
+            Video Editing
+          </button>
+          <button class="filter-btn" data-filter="mobile">
+            <span class="mas">Mobile App</span>
+            Mobile App
+          </button>
+          <button class="filter-btn" data-filter="branding">
+            <span class="mas">Branding</span>
+            Branding
+          </button>
         </div>
         <div class="portfolio-grid">
           <div class="portfolio-item" data-category="frontend">
@@ -471,7 +503,10 @@
               <div class="portfolio-overlay">
                 <h3>Front-End Project</h3>
                 <p>Modern responsive website</p>
-                <a href="#" class="portfolio-link">View Project</a>
+                <a href="#" class="portfolio-link">
+                  <span class="mas">View Project</span>
+                  View Project
+                </a>
               </div>
             </div>
           </div>
@@ -484,7 +519,10 @@
               <div class="portfolio-overlay">
                 <h3>Shopify Store Design</h3>
                 <p>Custom theme & design</p>
-                <a href="#" class="portfolio-link">View Project</a>
+                <a href="#" class="portfolio-link">
+                  <span class="mas">View Project</span>
+                  View Project
+                </a>
               </div>
             </div>
           </div>
@@ -495,7 +533,10 @@
               <div class="portfolio-overlay">
                 <h3>Brand Logo Design</h3>
                 <p>Professional brand identity</p>
-                <a href="#" class="portfolio-link">View Project</a>
+                <a href="#" class="portfolio-link">
+                  <span class="mas">View Project</span>
+                  View Project
+                </a>
               </div>
             </div>
           </div>
@@ -508,7 +549,10 @@
               <div class="portfolio-overlay">
                 <h3>Video Production</h3>
                 <p>Professional video editing & post-production</p>
-                <a href="#" class="portfolio-link">View Project</a>
+                <a href="#" class="portfolio-link">
+                  <span class="mas">View Project</span>
+                  View Project
+                </a>
               </div>
             </div>
           </div>
@@ -619,6 +663,10 @@
               <input type="email" id="email" name="email" required />
             </div>
             <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+            <div class="form-group">
               <label for="subject">Subject</label>
               <input type="text" id="subject" name="subject" required />
             </div>
@@ -631,7 +679,10 @@
                 required
               ></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Send Message</button>
+            <button type="submit" class="btn btn-primary">
+              <span class="mas">Send Message</span>
+              Send Message
+            </button>
           </form>
         </div>
       </div>
@@ -762,6 +813,9 @@
         </div>
       </div>
     </footer>
+
+    <!-- EmailJS SDK (for sending contact form emails) -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <script src="js/main.js"></script>
   </body>

@@ -6,13 +6,15 @@
 }
 
 :root {
-  --primary-color: #1c1fd2;
-  --primary-dark: #4f46e5;
-  --secondary-color: #545ead;
+  --primary-color: #0008ff;
+  --primary-dark: #1d4ed8;
+  --secondary-color: #3b82f6;
+  --accent-blue: #60a5fa;
   --text-dark: #1f2937;
   --text-light: #6b7280;
   --bg-light: #f9fafb;
   --bg-white: #ffffff;
+  --bg-dark: #000000;
   --border-color: #e5e7eb;
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -26,8 +28,8 @@ html {
 }
 
 body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: "Titillium Web", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   line-height: 1.6;
   color: var(--text-dark);
   background-color: var(--bg-white);
@@ -168,19 +170,25 @@ body {
   display: flex;
   align-items: center;
   padding: 80px 0 80px;
-  background: linear-gradient(
-    135deg,
-    #383bfd 0%,
-    #667eea 25%,
-    #764ba2 50%,
-    #8b5cf6 75%,
-    #383bfd 100%
-  );
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
+  background: #000000;
+  background-image: url("../img/9496050.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: white;
   position: relative;
   overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 
 @keyframes gradientShift {
@@ -204,7 +212,7 @@ body {
   bottom: 0;
   background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
   opacity: 0.3;
-  animation: gridMove 20s linear infinite;
+  animation: gridMove 10s linear infinite;
 }
 
 @keyframes gridMove {
@@ -226,20 +234,20 @@ body {
   bottom: 0;
   background-image: radial-gradient(
       circle at 20% 50%,
-      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.038) 0%,
       transparent 50%
     ),
     radial-gradient(
       circle at 80% 80%,
-      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.021) 0%,
       transparent 50%
     ),
     radial-gradient(
       circle at 40% 20%,
-      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.041) 0%,
       transparent 50%
     );
-  animation: floatParticles 20s ease-in-out infinite;
+  animation: floatParticles 15s ease-in-out infinite;
   pointer-events: none;
 }
 
@@ -254,7 +262,7 @@ body {
     opacity: 0.5;
   }
   66% {
-    transform: translate(-20px, 20px) scale(0.9);
+    transform: translate(-20px, 20px) scale(6);
     opacity: 0.4;
   }
 }
@@ -414,6 +422,16 @@ body {
 }
 
 .hero-content {
+  position: relative;
+  z-index: 3;
+}
+
+.hero-image {
+  position: relative;
+  z-index: 3;
+}
+
+.hero-content {
   animation: fadeInUp 0.8s ease;
 }
 
@@ -461,36 +479,111 @@ body {
   flex-wrap: wrap;
 }
 
+/* Button Mask Animation Styles */
+
 .btn {
   padding: 0.875rem 2rem;
   border-radius: 8px;
   font-weight: 600;
   text-decoration: none;
-  transition: var(--transition);
   display: inline-block;
-  border: 2px solid transparent;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  font-family: "Titillium Web", sans-serif;
+  letter-spacing: 1px;
+  z-index: 1;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000000;
+  -webkit-mask: url("https://raw.githubusercontent.com/pizza3/asset/master/natureSmaller.png");
+  mask: url("https://raw.githubusercontent.com/pizza3/asset/master/natureSmaller.png");
+  -webkit-mask-size: 7100% 100%;
+  mask-size: 7100% 100%;
+  -webkit-animation: buttonMaskForward 0.7s steps(70) forwards;
+  animation: buttonMaskForward 0.7s steps(70) forwards;
+  z-index: -1;
+}
+
+.btn:hover::before {
+  -webkit-animation: buttonMaskReverse 0.7s steps(70) forwards;
+  animation: buttonMaskReverse 1.7s steps(70) forwards;
+}
+
+.btn .mas {
+  display: none;
 }
 
 .btn-primary {
   background: white;
-  color: var(--primary-color);
+  color: #000000;
+  border: 1px solid #ffffff;
 }
 
 .btn-primary:hover {
+  background: #000000;
+  color: white;
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
 }
 
+.btn-primary::before {
+  background: #000000;
+}
+
 .btn-secondary {
-  background: transparent;
+  background: #000000;
+  background-image: url("../img/9496050.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: white;
-  border-color: white;
+  border: 2px solid white;
+  position: relative;
+}
+
+.btn-secondary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #5676d6;
+  background-image: url("../img/9496050.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  -webkit-mask: url("https://raw.githubusercontent.com/pizza3/asset/master/natureSmaller.png");
+  mask: url("https://raw.githubusercontent.com/pizza3/asset/master/natureSmaller.png");
+  -webkit-mask-size: 7100% 100%;
+  mask-size: 7100% 100%;
+  -webkit-animation: buttonMaskForward 0.7s steps(70) forwards;
+  animation: buttonMaskForward 0.7s steps(70) forwards;
+  z-index: -1;
+}
+
+.btn-secondary:hover::before {
+  -webkit-animation: buttonMaskReverse 0.7s steps(70) forwards;
+  animation: buttonMaskReverse 0.7s steps(70) forwards;
 }
 
 .btn-secondary:hover {
-  background: white;
-  color: var(--primary-color);
+  background: #000000;
+  background-image: url("../img/9496050.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  border: 2px solid white;
 }
 
 .hero-image {
@@ -503,7 +596,7 @@ body {
 .hero-graphic {
   width: 400px;
   height: 400px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -519,7 +612,7 @@ body {
   height: 80%;
   border: 3px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
-  animation: pulse 2s infinite;
+  animation: pulse 3.5s infinite;
 }
 
 .service-icons-container {
@@ -611,7 +704,7 @@ body {
 
 .scroll-indicator {
   position: absolute;
-  bottom: 30px;
+  bottom: 60px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -804,19 +897,50 @@ section {
 .filter-btn {
   padding: 0.75rem 1.5rem;
   background: white;
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--border-color);
   border-radius: 25px;
   font-weight: 500;
   cursor: pointer;
-  transition: var(--transition);
   color: var(--text-dark);
+  position: relative;
+  overflow: hidden;
+  font-family: "Titillium Web", sans-serif;
+  letter-spacing: 1px;
+  z-index: 1;
+}
+
+.filter-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000000;
+  -webkit-mask: url("https://raw.githubusercontent.com/pizza3/asset/master/natureSmaller.png");
+  mask: url("https://raw.githubusercontent.com/pizza3/asset/master/natureSmaller.png");
+  -webkit-mask-size: 7100% 100%;
+  mask-size: 7100% 100%;
+  -webkit-animation: buttonMaskForward 0.7s steps(70) forwards;
+  animation: buttonMaskForward 0.7s steps(70) forwards;
+  z-index: -1;
+}
+
+.filter-btn:hover::before,
+.filter-btn.active::before {
+  -webkit-animation: buttonMaskReverse 0.7s steps(70) forwards;
+  animation: buttonMaskReverse 0.7s steps(70) forwards;
+}
+
+.filter-btn .mas {
+  display: none;
 }
 
 .filter-btn:hover,
 .filter-btn.active {
-  background: var(--primary-color);
+  background: #000000;
   color: white;
-  border-color: var(--primary-color);
+  border-color: #000000;
 }
 
 .portfolio-grid {
@@ -944,15 +1068,48 @@ section {
 .portfolio-link {
   padding: 0.75rem 1.5rem;
   background: white;
-  color: var(--primary-color);
+  color: #000000;
   text-decoration: none;
   border-radius: 8px;
   font-weight: 600;
-  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  border: 1px solid #000000;
+  font-family: "Titillium Web", sans-serif;
+  letter-spacing: 1px;
+  z-index: 1;
+}
+
+.portfolio-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000000;
+  -webkit-mask: url("https://raw.githubusercontent.com/pizza3/asset/master/natureSmaller.png");
+  mask: url("https://raw.githubusercontent.com/pizza3/asset/master/natureSmaller.png");
+  -webkit-mask-size: 7100% 100%;
+  mask-size: 7100% 100%;
+  -webkit-animation: buttonMaskForward 0.7s steps(70) forwards;
+  animation: buttonMaskForward 0.7s steps(70) forwards;
+  z-index: -1;
+}
+
+.portfolio-link:hover::before {
+  -webkit-animation: buttonMaskReverse 0.7s steps(70) forwards;
+  animation: buttonMaskReverse 0.7s steps(70) forwards;
+}
+
+.portfolio-link .mas {
+  display: none;
 }
 
 .portfolio-link:hover {
   transform: scale(1.05);
+  color: white;
 }
 
 /* Contact Section */
@@ -1060,9 +1217,30 @@ section {
 
 /* Footer */
 .footer {
-  background: var(--text-dark);
+  background: #000000;
+  background-image: url("../img/9496050.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
   color: white;
   padding: 4rem 0 1.5rem;
+  position: relative;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 1;
+}
+
+.footer .container {
+  position: relative;
+  z-index: 2;
 }
 
 .footer-content {
@@ -1265,6 +1443,51 @@ section {
   }
 }
 
+/* Button Mask Animation Keyframes */
+@-webkit-keyframes buttonMaskForward {
+  from {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+  to {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+}
+
+@keyframes buttonMaskForward {
+  from {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+  to {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+}
+
+@-webkit-keyframes buttonMaskReverse {
+  from {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+  to {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+}
+
+@keyframes buttonMaskReverse {
+  from {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+  to {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 968px) {
   .hero .container {
@@ -1311,6 +1534,13 @@ section {
     grid-column: span 2;
     max-width: 100%;
     text-align: center;
+  }
+
+  /* Our Expertise - tablet layout */
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 600px;
+    margin: 0 auto;
   }
 }
 
@@ -1361,6 +1591,25 @@ section {
     grid-template-columns: 1fr;
   }
 
+  /* Our Expertise - small tablets / large phones */
+  .skills-grid {
+    grid-template-columns: 1fr 1fr;
+    max-width: 500px;
+  }
+
+  .skill-item {
+    padding: 0.85rem 1rem;
+  }
+
+  .skill-name {
+    font-size: 0.9rem;
+  }
+
+  /* Move scroll indicator slightly up on tablets/large phones */
+  .scroll-indicator {
+    bottom: 40px;
+  }
+
   .hero-buttons {
     justify-content: center;
   }
@@ -1390,6 +1639,21 @@ section {
 
   section {
     padding: 60px 0;
+  }
+
+  /* Our Expertise - mobile phones */
+  .skills-grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+
+  .skill-item {
+    padding: 0.8rem 0.9rem;
+  }
+
+  /* Move scroll indicator a bit closer to bottom on very small screens */
+  .scroll-indicator {
+    bottom: 30px;
   }
 
   .footer-content {
