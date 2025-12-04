@@ -277,5 +277,5 @@ if (serviceIcons.length > 0) {
   }, 100);
 
   // Rotate every 1.5 seconds (faster transitions)
-  setInterval(rotateServiceIcons, 1200);
+  setInterval(rotateServiceIcons, 1250);
 }
