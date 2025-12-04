@@ -274,8 +274,8 @@ if (serviceIcons.length > 0) {
   // Show first icon immediately
   setTimeout(() => {
     serviceIcons[0].classList.add("active");
-  }, 500);
+  }, 100);
 
-  // Rotate every 2 seconds (faster transitions)
-  setInterval(rotateServiceIcons, 1750);
+  // Rotate every 1.5 seconds (faster transitions)
+  setInterval(rotateServiceIcons, 1200);
 }
