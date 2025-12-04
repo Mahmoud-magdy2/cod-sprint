@@ -144,7 +144,7 @@ if (contactForm) {
       )
       .then(
         () => {
-          alert("تم إرسال رسالتك بنجاح ✅");
+          alert("Your message has been sent successfully ✅");
           contactForm.reset();
         },
         (error) => {
